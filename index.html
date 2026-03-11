@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~* Meu Mundinho Rosa *~</title>
+    <style>
+        :root {
+            --pink-light: #ffb6c1;
+            --pink-hot: #ff1493;
+            --pink-mid: #ff69b4;
+            --pink-dark: #d10069;
+            --bg-window: #fff0f5;
+        }
+
+        body { 
+            background-color: var(--pink-light); 
+            background-image: radial-gradient(var(--pink-mid) 2px, transparent 2px); 
+            background-size: 30px 30px; 
+            color: var(--pink-dark); 
+            font-family: "Comic Sans MS", "Chalkboard SE", cursive; 
+            padding: 20px; 
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            cursor: url('https://cur.cursors-4u.net/nature/nat-2/nat120.cur'), auto; 
+        }
+
+        .window-container {
+            background-color: var(--bg-window); 
+            border: 4px dashed var(--pink-hot); 
+            border-radius: 15px; 
+            padding: 20px;
+            box-shadow: 12px 12px 0px rgba(255, 105, 180, 0.4); 
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .window-title-bar {
+            background: linear-gradient(90deg, var(--pink-hot), var(--pink-light)); 
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 20px -20px; 
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--pink-mid);
+            text-shadow: 1px 1px 2px var(--pink-dark);
+        }
+
+        header { text-align: center; margin-bottom: 20px; }
+
+        marquee {
+            font-size: 1.2em;
+            color: var(--pink-hot);
+            font-weight: bold;
+            background: #fff;
+            border: 2px dotted var(--pink-mid);
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 15px;
+        }
+
+        h1 { 
+            font-family: "Arial Black", sans-serif;
+            font-size: 2.2em;
+            color: var(--pink-hot); 
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px var(--pink-mid); 
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .controles { 
+            margin-bottom: 20px; 
+            display: flex; 
+            gap: 10px; 
+            flex-wrap: wrap; 
+            justify-content: center;
+            background: #fff;
+            padding: 15px;
+            border: 2px dotted var(--pink-mid);
+            border-radius: 10px;
+        }
+
+        input[type="text"] { 
+            padding: 10px 15px; 
+            flex-grow: 1; 
+            border: 2px solid var(--pink-light);
+            border-radius: 20px;
+            font-family: "Comic Sans MS", cursive;
+            font-size: 1em;
+            color: var(--pink-dark);
+            background-color: #fffafa; 
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--pink-hot);
+            box-shadow: 0 0 8px var(--pink-light);
+        }
+
+        button { 
+            padding: 8px 16px; 
+            cursor: pointer; 
+            font-family: "Comic Sans MS", cursive;
+            font-size: 0.9em;
+            background: var(--pink-mid);
+            border: 2px solid var(--pink-hot);
+            border-radius: 20px;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 3px 3px 0px var(--pink-hot);
+            transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+        }
+
+        button:active {
+            box-shadow: 0px 0px 0px var(--pink-hot);
+            transform: translate(3px, 3px);
+        }
+
+        button:hover { background: var(--pink-hot); }
+
+        #gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px; 
+            background: #fff;
+            padding: 20px;
+            border: 3px double var(--pink-mid);
+            border-radius: 10px;
+            transition: opacity 0.3s ease-in-out; 
+            min-height: 200px;
+        }
+
+        .fade-out { opacity: 0; }
+
+        .img-card { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            border: 5px solid #fff;
+            border-radius: 8px;
+            box-shadow: 4px 4px 10px rgba(255, 20, 147, 0.2); 
+            transition: transform 0.2s;
+        }
+
+        .img-card:hover { transform: scale(1.05) rotate(-2deg); z-index: 1; }
+
+        #pagination { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
+
+        .active-page { 
+            background-color: var(--pink-hot) !important; 
+            box-shadow: 0px 0px 0px var(--pink-hot) !important;
+            transform: translate(3px, 3px);
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--pink-hot);
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .blink {
+            animation: blinker 1.5s linear infinite;
+            color: var(--pink-hot);
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        @keyframes blinker { 50% { opacity: 0.3; } }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="window-container">
+        <div class="window-title-bar">
+            <span>✧ meu_diario.exe ✧</span>
+            <span>[ X ]</span>
+        </div>
+
+        <header>
+            <marquee scrollamount="6">💖 ⋆ 🎀 𝒷𝑒𝓂-𝓋𝒾𝓃𝒹𝓍𝓈 𝒶𝑜 𝓂𝑒𝓊 𝓂𝓊𝓃𝒹𝒾𝓃𝒽𝑜 🎀 ⋆ 💖</marquee>
+            <h1>~* Galeria Y2K *~</h1>
+        </header>
+
+        <section class="controles">
+            <input type="text" id="searchInput" placeholder="O que você tá procurando, bestie? 💅">
+        </section>
+
+        <section class="controles" id="filters">
+            <button data-cat="all">Tudinho</button>
+            <button data-cat="natureza">Natureza 🌸</button>
+            <button data-cat="cidade">Cidade 🏙️</button>
+            <button data-cat="animais">Bichinhos 🐶</button>
+            <button data-cat="tecnologia">Tech 💻</button>
+            <button data-cat="pessoas">Galera 👯‍♀️</button>
+        </section>
+
+        <section id="gallery"></section>
+        <nav id="pagination"></nav>
+        
+        <p class="footer-text">Feito com 💖 e JavaScript!</p>
+    </main>
+
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
