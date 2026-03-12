@@ -1,2 +1,2 @@
-// Instancia as classes corrigidas e bota o app pra rodar!
+// IServe pra fazer o site funcionar. Ele cria uma nova instancia
 const app = new GalleryController(new GalleryModel(), new GalleryView());
