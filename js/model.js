@@ -1,12 +1,9 @@
-/**
- * Model.js
- * Responsável por armazenar os dados e aplicar a lógica de filtragem
- * Padrão MVC - Model
- */
-
 class GalleryModel {
+    /* ............................................................
+       1. Construtor dos dados
+       ............................................................ */
     constructor() {
-        // Dados originais mantidos conforme você pediu!
+        // Nosso "Banco de Dados" fictício. Um array de objetos com todas as informações das fotos.
         this.images = [
             { id: 1, src: 'img/natureza1.jpg', title: 'Floresta Tropical', description: 'Uma bela floresta verdejante com raios de sol', category: 'natureza' },
             { id: 2, src: 'img/cidade1.jpg', title: 'Skyline Urbano', description: 'Arranha-céus iluminados ao entardecer', category: 'cidade' },
@@ -30,20 +27,23 @@ class GalleryModel {
             { id: 20, src: 'img/pessoas4.jpg', title: 'Artista Criativo', description: 'Pintor trabalhando em sua obra-prima', category: 'pessoas' }
         ];
 
-        // Estado atual
-        this.currentCategory = 'all';
-        this.searchQuery = '';
-        this.currentPage = 1;
-        this.itemsPerPage = 4;
+        // Estado inicial do aplicativo (como ele deve abrir pela primeira vez)
+        this.currentCategory = 'all'; // Categoria atual selecionada
+        this.searchQuery = '';        // O que está digitado na barra de pesquisa
+        this.currentPage = 1;         // Em qual página estamos
+        this.itemsPerPage = 4;        // Quantas fotos aparecem por página
     }
 
+    /* ............................................................
+       2. Setters que fazem as coisas mudarem conforme o controller
+       ............................................................ */
     setCategory(category) {
         this.currentCategory = category;
         this.currentPage = 1; 
     }
 
     setSearchQuery(query) {
-        this.searchQuery = query.toLowerCase().trim();
+        this.searchQuery = query.toLowerCase().trim(); // Limpa espaços e deixa minúsculo pra facilitar a busca
         this.currentPage = 1; 
     }
 
@@ -51,6 +51,7 @@ class GalleryModel {
         this.currentPage = page;
     }
 
+    // Avança uma página (se não estiver na última)
     nextPage() {
         const totalPages = this.getTotalPages();
         if (this.currentPage < totalPages) {
@@ -58,47 +59,75 @@ class GalleryModel {
         }
     }
 
+    // Volta uma página (se não estiver na primeira)
     prevPage() {
         if (this.currentPage > 1) {
             this.currentPage--;
         }
     }
 
+    /* ............................................................
+       3. Getters mais complicados
+       ............................................................ */
+
+    // O "funil" principal: pega todas as 20 fotos e filtra apenas as que combinam
+    // com a categoria atual E com a palavra digitada na busca.
     getFilteredImages() {
         return this.images.filter(image => {
+            // Verifica se a foto pertence à categoria selecionada (ou se é 'all')
             const categoryMatch = this.currentCategory === 'all' || 
                                   image.category === this.currentCategory;
             
+            // Verifica se o título ou descrição da foto contêm o que o usuário digitou
             const searchMatch = this.searchQuery === '' || 
                                image.title.toLowerCase().includes(this.searchQuery) ||
                                image.description.toLowerCase().includes(this.searchQuery);
             
+            // A foto só passa pelo filtro se combinar com a categoria E com a busca!
             return categoryMatch && searchMatch;
         });
     }
 
+    // Calcula exatamente quais das fotos filtradas devem aparecer na página atual
     getCurrentPageImages() {
         const filtered = this.getFilteredImages();
+        
+        // Exemplo matemático: Se estamos na página 2 e são 4 por página:
+        // startIndex = (2 - 1) * 4 = 4. 
+        // endIndex = 4 + 4 = 8.
+        // Ou seja, ele vai cortar (slice) o array e pegar as fotos da posição 4 até a 7.
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
         const endIndex = startIndex + this.itemsPerPage;
+        
         return filtered.slice(startIndex, endIndex);
     }
 
+    // Calcula quantas páginas no total vamos precisar para exibir as fotos filtradas
     getTotalPages() {
         const filtered = this.getFilteredImages();
-        // Garantindo que nunca retorne 0 para não bugar a View
+        
+        // Ex: 10 fotos / 4 por página = 2.5 páginas. O Math.ceil arredonda pra cima (3 páginas).
+        // O "|| 1" garante que, mesmo se não achar nenhuma foto, ele retorne que existe 1 página vazia.
         return Math.ceil(filtered.length / this.itemsPerPage) || 1;
     }
 
+    /* ............................................................
+       4. Getters
+       ............................................................ */
+
+    // Retorna a quantidade total de fotos que passaram no filtro atual
     getTotalImages() {
         return this.getFilteredImages().length;
     }
 
+    // Retorna um array com todas as categorias únicas que existem no banco de dados.
+    // Usamos 'Set' porque ele remove itens duplicados magicamente!
     getCategories() {
         const categories = new Set(this.images.map(img => img.category));
         return ['all', ...Array.from(categories)];
     }
 
+    // Busca uma foto específica pelo seu número de ID
     getImageById(id) {
         return this.images.find(image => image.id === id) || null;
     }
