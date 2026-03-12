@@ -5,27 +5,36 @@ class GalleryModel {
     constructor() {
         // Nosso "Banco de Dados" fictício. Um array de objetos com todas as informações das fotos.
         this.images = [
-            { id: 1, src: 'img/natureza1.jpg', title: 'Floresta Tropical', description: 'Uma bela floresta verdejante com raios de sol', category: 'natureza' },
-            { id: 2, src: 'img/cidade1.jpg', title: 'Skyline Urbano', description: 'Arranha-céus iluminados ao entardecer', category: 'cidade' },
-            { id: 3, src: 'img/animais1.jpg', title: 'Leão Majestoso', description: 'Um leão descansando na savana africana', category: 'animais' },
-            { id: 4, src: 'img/tecnologia1.jpg', title: 'Código Futurista', description: 'Interface de programação moderna e elegante', category: 'tecnologia' },
-            { id: 5, src: 'img/pessoas1.jpg', title: 'Trabalho em Equipe', description: 'Pessoas colaborando em um projeto criativo', category: 'pessoas' },
-            { id: 6, src: 'img/natureza2.jpg', title: 'Cachoeira Serena', description: 'Águas cristalinas caindo entre as rochas', category: 'natureza' },
-            { id: 7, src: 'img/cidade2.jpg', title: 'Ruas Históricas', description: 'Arquitetura clássica em uma cidade europeia', category: 'cidade' },
-            { id: 8, src: 'img/animais2.jpg', title: 'Pássaro Colorido', description: 'Um arara exibindo suas penas vibrantes', category: 'animais' },
-            { id: 9, src: 'img/tecnologia2.jpg', title: 'Inteligência Artificial', description: 'Visualização de rede neural e machine learning', category: 'tecnologia' },
-            { id: 10, src: 'img/pessoas2.jpg', title: 'Momento de Alegria', description: 'Amigos rindo e aproveitando o momento', category: 'pessoas' },
-            { id: 11, src: 'img/natureza3.jpg', title: 'Montanhas Nevadas', description: 'Picos cobertos de neve sob um céu azul', category: 'natureza' },
-            { id: 12, src: 'img/cidade3.jpg', title: 'Vida Noturna', description: 'Ruas movimentadas com luzes de neon', category: 'cidade' },
-            { id: 13, src: 'img/animais3.jpg', title: 'Golfinho Brincalhão', description: 'Golfinho saltando sobre as ondas do mar', category: 'animais' },
-            { id: 14, src: 'img/tecnologia3.jpg', title: 'Realidade Virtual', description: 'Experiência imersiva com óculos VR', category: 'tecnologia' },
-            { id: 15, src: 'img/pessoas3.jpg', title: 'Estudante Focado', description: 'Jovem estudando em uma biblioteca tranquila', category: 'pessoas' },
-            { id: 16, src: 'img/natureza4.jpg', title: 'Pôr do Sol', description: 'Cores vibrantes no horizonte ao final do dia', category: 'natureza' },
-            { id: 17, src: 'img/cidade4.jpg', title: 'Ponte Iluminada', description: 'Estrutura arquitetônica sobre o rio à noite', category: 'cidade' },
-            { id: 18, src: 'img/animais4.jpg', title: 'Família de Pandas', description: 'Pandas gigantes em seu habitat natural', category: 'animais' },
-            { id: 19, src: 'img/tecnologia4.jpg', title: 'Servidor em Nuvem', description: 'Infraestrutura de data center moderna', category: 'tecnologia' },
-            { id: 20, src: 'img/pessoas4.jpg', title: 'Artista Criativo', description: 'Pintor trabalhando em sua obra-prima', category: 'pessoas' }
-        ];
+    // CIDADE
+    { id: 1, src: 'img/cidade1.jpg', title: 'Skyline Urbano', description: 'Vista urbana em Madalena', category: 'cidade' },
+    { id: 2, src: 'img/cidade2.jpg', title: 'Ruas Históricas', description: 'Visitando o interior do meu pai', category: 'cidade' },
+    { id: 3, src: 'img/cidade3.jpg', title: 'Vida Noturna', description: 'Terra da minha amiga da escola: Jéssica', category: 'cidade' },
+    { id: 4, src: 'img/cidade4.jpg', title: 'Ponte Iluminada', description: 'Valha-me São Francisco #Canindé', category: 'cidade' },
+
+    // TECNOLOGIA
+    { id: 5, src: 'img/tecnologia1.jpg', title: 'Futurista', description: 'Esse perafone é mesmo um sucesso', category: 'tecnologia' },
+    { id: 6, src: 'img/tecnologia2.jpg', title: 'Netbook novo', description: 'Como usar esse mini computador, aka netbook?', category: 'tecnologia' },
+    { id: 7, src: 'img/tecnologia3.jpg', title: 'Câmera Digital', description: 'Valeu pelo presente, pai! #cybershot', category: 'tecnologia' },
+    { id: 8, src: 'img/tecnologia4.jpg', title: 'PS2', description: 'No ponto de jogar Amor Doce nesse #PS2', category: 'tecnologia' },
+
+    // PESSOAS
+    { id: 9, src: 'img/pessoas1.jpg', title: 'Niver', description: 'Aniversário do priminho', category: 'pessoas' },
+    { id: 10, src: 'img/pessoas2.jpg', title: 'Momento de Alegria', description: 'Patati Patatá', category: 'pessoas' },
+    { id: 11, src: 'img/pessoas3.jpg', title: 'São João', description: 'Festa Junina da EP', category: 'pessoas' },
+    { id: 12, src: 'img/pessoas4.jpg', title: 'Amigas', description: 'BFFs', category: 'pessoas' },
+
+    // FAMOSOS
+    { id: 13, src: 'img/famosos1.jpg', title: 'Car Ride', description: 'Lindsay Lohan, Britney Spears e Paris Hilton', category: 'famosos' },
+    { id: 14, src: 'img/famosos2.jpg', title: 'High School Musical', description: 'Premiere de HSM ❤️', category: 'famosos' },
+    { id: 15, src: 'img/famosos3.jpg', title: 'Heróis da Terra', description: 'Absolute filme do ano!!! #XMen', category: 'famosos' },
+    { id: 16, src: 'img/famosos4.jpg', title: 'Rebelde', description: 'Y soy rebelde #amoeles', category: 'famosos' },
+
+    // PELÚCIA
+    { id: 17, src: 'img/pelucia1.jpg', title: 'Urso de Pelúcia', description: 'Meu urso favorito', category: 'pelucia' },
+    { id: 18, src: 'img/pelucia2.jpg', title: 'Coelho de Pelúcia', description: 'Presente de aniversário', category: 'pelucia' },
+    { id: 19, src: 'img/pelucia3.jpg', title: 'Panda Fofo', description: 'Muito macio e fofo', category: 'pelucia' },
+    { id: 20, src: 'img/pelucia4.jpg', title: 'Tigre de Pelúcia', description: 'Companheiro de aventuras', category: 'pelucia' }
+    ];
 
         // Estado inicial do aplicativo (como ele deve abrir pela primeira vez)
         this.currentCategory = 'all'; // Categoria atual selecionada
