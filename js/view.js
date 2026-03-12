@@ -12,8 +12,7 @@ class GalleryView {
 
     /* ............................................................
        2. BINDERS (Conectando a tela com o Controller)
-       Esses métodos não tomam decisões. Eles apenas dizem:
-       "Ei, Controller, o usuário clicou aqui! Toma esse dado e faz algo!"
+       Esses métodos não tomam decisões
        ............................................................ */
 
     // Ouve os cliques nos botões de categoria (Natureza, Cidade, etc.)
