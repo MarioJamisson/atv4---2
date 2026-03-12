@@ -10,9 +10,10 @@ class GalleryController {
         this.updateView();
     }
 
+    //É um handle que altera a categoria.
     handleChangeCategory = (category) => {
-        this.model.setCategory(category);
-        this.updateView();
+        this.model.setCategory(category); //Seleciona a categoria
+        this.updateView(); //Atualiza a view com a categoria nova
     }
 
     handleSearch = (query) => {
